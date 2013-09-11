@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="jasmine">
+      <UniqueIdentifier>{a0e29606-3c32-4805-b339-fa895e9610dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h">
@@ -20,6 +23,18 @@
     </ClInclude>
     <ClInclude Include="log.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jasmine\spec.h">
+      <Filter>jasmine</Filter>
+    </ClInclude>
+    <ClInclude Include="jasmine\describe.h">
+      <Filter>jasmine</Filter>
+    </ClInclude>
+    <ClInclude Include="jasmine\jasmine.h">
+      <Filter>jasmine</Filter>
+    </ClInclude>
+    <ClInclude Include="jasmine\expect.h">
+      <Filter>jasmine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

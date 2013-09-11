@@ -44,7 +44,6 @@ public:
 	static void ResetColor(){
 		SetConsoleTextColor(Color::WHITE);
 	}
-private:
     static void SetConsoleTextColor(Color color) {
         int foreground = (int)color;
         if(is_intensity) {

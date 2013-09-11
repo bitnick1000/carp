@@ -64,6 +64,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="console.h" />
+    <ClInclude Include="jasmine\describe.h" />
+    <ClInclude Include="jasmine\expect.h" />
+    <ClInclude Include="jasmine\jasmine.h" />
+    <ClInclude Include="jasmine\spec.h" />
     <ClInclude Include="log.h" />
   </ItemGroup>
   <ItemGroup>

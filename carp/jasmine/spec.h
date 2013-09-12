@@ -20,8 +20,17 @@ class Spec {
     std::list<SpecInfo> specList;
     int levelNow;
 public:
+	int ErrorSum;
+	int ExpectSum;
+public:
+	static Spec& Instance(){
+		static Spec instance;
+		return instance;
+	}
     Spec() {
         this->levelNow = 0;
+		this->ErrorSum=0;
+		this->ExpectSum=0;
     }
     void LevelUp() {
         this->levelNow++;
@@ -57,6 +66,18 @@ public:
             Console::ResetColor();
         }
     }
+	void Conclusion(){
+		if(this->ErrorSum==0){
+			Console::SetConsoleTextColor(Console::Color::GREEN);
+			std::cout<<ExpectSum<<" all passed"<<std::endl;
+			  Console::ResetColor();
+		}else{
+			Console::SetConsoleTextColor(Console::Color::RED);
+			std::cout<<ErrorSum<<" failed"<<std::endl;
+			  Console::ResetColor();
+		}
+
+	}
     void AddError(std::string error) {
         specList.back().errors.push_back(error);
     }

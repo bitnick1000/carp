@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "carp", "carp\carp.vcxproj", "{6DF52F79-6C25-426C-995C-7DF47B38DA9E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jasmine_test", "jasmine_test\jasmine_test.vcxproj", "{AA58D863-9659-4B60-BD70-0A56EAA02698}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RGBAImage_test", "RGBAImage_test\RGBAImage_test.vcxproj", "{446C42B2-9A7D-48D6-A483-8DCCA802DE54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +17,14 @@ Global
 		{6DF52F79-6C25-426C-995C-7DF47B38DA9E}.Debug|Win32.Build.0 = Debug|Win32
 		{6DF52F79-6C25-426C-995C-7DF47B38DA9E}.Release|Win32.ActiveCfg = Release|Win32
 		{6DF52F79-6C25-426C-995C-7DF47B38DA9E}.Release|Win32.Build.0 = Release|Win32
+		{AA58D863-9659-4B60-BD70-0A56EAA02698}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AA58D863-9659-4B60-BD70-0A56EAA02698}.Debug|Win32.Build.0 = Debug|Win32
+		{AA58D863-9659-4B60-BD70-0A56EAA02698}.Release|Win32.ActiveCfg = Release|Win32
+		{AA58D863-9659-4B60-BD70-0A56EAA02698}.Release|Win32.Build.0 = Release|Win32
+		{446C42B2-9A7D-48D6-A483-8DCCA802DE54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{446C42B2-9A7D-48D6-A483-8DCCA802DE54}.Debug|Win32.Build.0 = Debug|Win32
+		{446C42B2-9A7D-48D6-A483-8DCCA802DE54}.Release|Win32.ActiveCfg = Release|Win32
+		{446C42B2-9A7D-48D6-A483-8DCCA802DE54}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

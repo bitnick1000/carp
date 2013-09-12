@@ -1,14 +1,4 @@
-#include "console.h"
-#include "console.h"
-#include "log.h"
-#include "log.h"
-#include <iostream>
-
-#include "jasmine.h"
-//#include "jasmine\spec.h"
-enum class Clor {
-    RED = FOREGROUND_RED
-};
+#include <jasmine.h>
 
 void main() {
     Describe("Player", func() {

@@ -1,26 +1,25 @@
 #ifndef __DESCRIBE_H__
 #define __DESCRIBE_H__
-#include "spec.h"
-#include "jasmine.h"
-#include <iostream>
 
-#define func []
 typedef void (*fp)();
 
-void Describe(std::string description,fp f){
-	spec.LevelUp();
-	spec.AddApec(description,FunctionType::Describe);
+template<typename F>
+void Describe(std::string description,F f){
+	Spec::Instance().LevelUp();
+	Spec::Instance().AddApec(description,FunctionType::Describe);
 	f();
-	spec.LevelDown();
-	if (spec.GetLevel()==0){
-		spec.Print();
+	Spec::Instance().LevelDown();
+	if (Spec::Instance().GetLevel()==0){
+		Spec::Instance().Print();
+		Spec::Instance().Conclusion();
 	}
 }
-void It(std::string description,fp f){
-	spec.LevelUp();
-	spec.AddApec(description,FunctionType::It);
+template<typename F>
+void It(std::string description,F f){
+	Spec::Instance().LevelUp();
+	Spec::Instance().AddApec(description,FunctionType::It);
 	f();
-	spec.LevelDown();
+	Spec::Instance().LevelDown();
 }
 
 #endif

@@ -16,6 +16,9 @@
     <Filter Include="jasmine">
       <UniqueIdentifier>{a0e29606-3c32-4805-b339-fa895e9610dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="image">
+      <UniqueIdentifier>{96aa3611-11b0-44e9-b731-a68803239c3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h">
@@ -30,11 +33,20 @@
     <ClInclude Include="jasmine\describe.h">
       <Filter>jasmine</Filter>
     </ClInclude>
-    <ClInclude Include="jasmine\jasmine.h">
-      <Filter>jasmine</Filter>
-    </ClInclude>
     <ClInclude Include="jasmine\expect.h">
       <Filter>jasmine</Filter>
+    </ClInclude>
+    <ClInclude Include="image\RGBAImage.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="image\RGBAColor.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="jasmine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

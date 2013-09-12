@@ -11,12 +11,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6DF52F79-6C25-426C-995C-7DF47B38DA9E}</ProjectGuid>
-    <RootNamespace>carp</RootNamespace>
+    <ProjectGuid>{AA58D863-9659-4B60-BD70-0A56EAA02698}</ProjectGuid>
+    <RootNamespace>jasmine_test</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -43,6 +43,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\carp</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -63,18 +64,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="console.h" />
-    <ClInclude Include="image.h" />
-    <ClInclude Include="image\RGBAColor.h" />
-    <ClInclude Include="image\RGBAImage.h" />
-    <ClInclude Include="jasmine.h" />
-    <ClInclude Include="jasmine\describe.h" />
-    <ClInclude Include="jasmine\expect.h" />
-    <ClInclude Include="jasmine\spec.h" />
-    <ClInclude Include="log.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ProjectReference Include="..\carp\carp.vcxproj">
+      <Project>{6df52f79-6c25-426c-995c-7df47b38da9e}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

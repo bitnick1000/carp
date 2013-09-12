@@ -5,30 +5,33 @@
 #include <fstream>
 #include <Windows.h>
 #include "RGBAColor.h"
+#include "coord.h"
 using namespace std;
 
 template<typename T>
 class RGBAImage {
     typedef T value_type ;
-    //origin upper left
-    T *data;
+    T *data; //origin upper left
     int width, height;
 public:
-    RGBAImage(char* filename) {
-        ReadFromFile(filename);
-    }
-    int Width() {
+    //properties
+    int Width() const {
         return this->width;
     }
-    int Height() {
+    int Height() const {
         return this->height;
     }
-    RGBAColor<T> GetPixel(int x, int y) {
+    RGBAColor<T> GetPixel(int x, int y) const {
         T *p = data + 4 * (y * width + x);
         return *((RGBAColor<T>*)p);
     }
     T* dataPtr(int x, int y) const {
         return data + 4 * (y * this->width + x);
+    }
+public:
+    //constructor
+    RGBAImage(char* filename) {
+        ReadFromFile(filename);
     }
     void ReadFromFile(char* filename) {
         int len   = lstrlen(filename);
@@ -83,7 +86,7 @@ public:
                     p[0] = pImage[3];
                     p[1] = pImage[2];
                     p[2] = pImage[1];
-                    p[3] = (T)~(T)0; //T MAX, byte 255, uint16 65535
+                    p[3] = (T)~(T)0;
                     p += 4;
                     pImage += spectrum;
                 }
@@ -91,8 +94,10 @@ public:
             }
         }
 
-        free(imageData);
-        file.close();
+        if (imageData != nullptr) {
+            free(imageData);
+            imageData = nullptr;
+        }
         return ;
 
         if( spectrum == 3) {
@@ -115,6 +120,44 @@ public:
             //ASSERT(FALSE);
         }
         file.close();
+    }
+public:
+    //destructor
+    ~RGBAImage() {
+        if (data != nullptr) {
+            free(data);
+            data = nullptr;
+        }
+    }
+public:
+    Coord<short> IndexOf(RGBAImage& subImage) {
+        Coord<short> coord (0, 0);
+        for( ; coord.Y < Height() - subImage.Height() + 1; coord.Y++) {
+            for(coord.X = 0 ; coord.X < Width() - subImage.Width() + 1; coord.X++) {
+                if(ContainsAt(coord, subImage)) {
+                    return coord;
+                }
+            }
+        }
+        return Coord<short>(-1, -1);
+    }
+    bool ContainsAt(Coord<short> coord, RGBAImage& subImage) {
+        INT32 subY;
+        RGBAColor<T>* pSub;
+        RGBAColor<T>* p;
+
+        for(subY = 0; subY < subImage.Height(); subY++) {
+            p = ( RGBAColor<T>*) dataPtr(coord.X, coord.Y + subY);
+            pSub = ( RGBAColor<T>*)subImage.dataPtr(0, subY);
+            for(int x = 0; x < subImage.height; x++) {
+                if(*p != *pSub) {
+                    return false;
+                }
+                p++;
+                pSub++;
+            }
+        }
+        return true;
     }
 };
 

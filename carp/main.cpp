@@ -11,23 +11,23 @@ enum class Clor {
 };
 
 void main() {
-    Describe("Player", func() {
+    Describe("Player", []() {
         Expect(true).ToBeTruthy();
-        It("should be able to play a Song", func() {
+        It("should be able to play a Song", []() {
             Expect(true).ToBeTruthy();
         });
-        Describe("when song has been paused", func() {
-            It("should indicate that the song is currently paused", func() {
+        Describe("when song has been paused", []() {
+            It("should indicate that the song is currently paused", []() {
                 Expect(true).ToBeTruthy();
             });
-            It("should be possible to resume", func() {
+            It("should be possible to resume", []() {
                 Expect(true).ToBeTruthy();
             });
         });
-        It("tells the current song if the user has made it a favorite", func() {
+        It("tells the current song if the user has made it a favorite", []() {
             Expect(true).ToBeTruthy();
         });
-        Describe("alway error", func() {
+        Describe("alway error", []() {
             Expect("always error").ToBe("error");
         });
     });

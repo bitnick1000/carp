@@ -8,9 +8,7 @@
 #include "jasmine/describe.h"
 #include "jasmine/expect.h"
 
-#define func []
-
-#define Benchmark(description,function)     \
+#define Benchmark(description,lambda)     \
 	do{                                                              \
 	LARGE_INTEGER time_start;                       \
     LARGE_INTEGER time_over;                       \
@@ -19,7 +17,7 @@
     QueryPerformanceFrequency(&f);             \
     freq = (double)f.QuadPart;                         \
     QueryPerformanceCounter(&time_start);   \
-	function;                                                      \
+	lambda();                                                      \
 	QueryPerformanceCounter(&time_over);   \
 	std::cout <<description<<" "<< ((time_over.QuadPart - time_start.QuadPart))  / freq << "s" << std::endl;\
 	}while(0);

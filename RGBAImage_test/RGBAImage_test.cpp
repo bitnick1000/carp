@@ -7,7 +7,6 @@
 #include <algorithm>
 
 void debug() {
-
 }
 void main() {
     debug();
@@ -26,11 +25,24 @@ void main() {
                 Expect(image.Width()).ToBe(512);
             });
             It("should be able to get pixel", [&image]() {
-                //RGBAColor<byte> color={1,2,94,0};
                 Expect(image.GetPixel(0, 0)).ToBe(RGBAColor<byte>(225, 138, 128, 255));
-                /*		std::for_each(
-                image.GetPixel*/
+            });
+            It("should be able to indexof sub image", [&image]() {
+                RGBAImage<byte> sub1("TestResources/IndexOf/sub1.bmp");
+                RGBAImage<byte> sub2("TestResources/IndexOf/sub2.bmp");
+                RGBAImage<byte> sub3("TestResources/IndexOf/sub3.bmp");
+                Expect(image.IndexOf(sub1)).ToBe(Coord<short>(0, 0));
+                Expect(image.IndexOf(sub2)).ToBe(Coord<short>(1, 500));
+                Expect(image.IndexOf(sub3)).ToBe(Coord<short>(122, 237));
             });
         });
+    });
+    Benchmark("read lene.bmp", []() {
+        RGBAImage<byte> image("TestResources/Lena.bmp");
+    });
+    Benchmark("indexof lene.bmp", []() {
+        RGBAImage<byte> sub3("TestResources/IndexOf/sub3.bmp");
+        RGBAImage<byte> image("TestResources/Lena.bmp");
+        image.IndexOf(sub3);
     });
 }

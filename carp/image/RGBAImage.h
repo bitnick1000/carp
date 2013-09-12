@@ -24,8 +24,11 @@ public:
         return this->height;
     }
     RGBAColor<T> GetPixel(int x, int y) {
-        T *p = data + y * width + x;
+        T *p = data + 4 * (y * width + x);
         return *((RGBAColor<T>*)p);
+    }
+    T* dataPtr(int x, int y) const {
+        return data + 4 * (y * this->width + x);
     }
     void ReadFromFile(char* filename) {
         int len   = lstrlen(filename);
@@ -51,14 +54,54 @@ public:
         int spectrum = bmpInfo.bmiHeader.biBitCount / 8;
         int readOffset = 4 - spectrum * this->width & 0x3;
 
-        int  dataSize = this->width * this->height * 4 ;
-        data = (T*)malloc(dataSize);
+        int  dataSize = this->width * this->height * 4 * sizeof(T) ;
+        this->data = (T*)malloc(dataSize);
+
+        //read file into memory
+        char* imageData =  (char*)malloc(bmpInfo.bmiHeader.biSizeImage);
+        file.seekg(bmpFileHeader.bfOffBits);
+        file.read((char*)imageData, dataSize);
+        char* pImage = imageData;
+
+        if(spectrum == 3)
+            for(int y = 0; y < this->height ; y++) {
+                T* p = dataPtr(0, this->height - 1 - y);
+                for(int x = 0; x < this->width; x++) {
+                    p[0] = pImage[2];
+                    p[1] = pImage[1];
+                    p[2] = pImage[0];
+                    p[3] = (T)~(T)0; //T MAX, byte 255, uint16 65535
+                    p += 4;
+                    pImage += spectrum;
+                }
+                pImage += readOffset;
+            }
+        else if(spectrum == 4) {
+            for(int y = 0; y < this->height ; y++) {
+                T* p = dataPtr(0, this->height - 1 - y);
+                for(int x = 0; x < this->width; x++) {
+                    p[0] = pImage[3];
+                    p[1] = pImage[2];
+                    p[2] = pImage[1];
+                    p[3] = (T)~(T)0; //T MAX, byte 255, uint16 65535
+                    p += 4;
+                    pImage += spectrum;
+                }
+                pImage += readOffset;
+            }
+        }
+
+        free(imageData);
+        file.close();
+        return ;
+
         if( spectrum == 3) {
             file.seekg(bmpFileHeader.bfOffBits);
             char* p = (char*)this->data;
-            for(int y = 0; y < this->height; y++) {
+            char temp[3];
+            for(int y = this->height - 1; y >= 0 ; y--) {
                 for(int x = 0; x < this->width; x++) {
-                    file.read(p, 3);
+                    file.read(temp, 3);
                     p[3] = (T)~(T)0; //T MAX, byte 255, uint16 65535
                     p += 4;
                 }

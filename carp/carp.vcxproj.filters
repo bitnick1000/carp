@@ -51,6 +51,9 @@
     <ClInclude Include="image\coord.h">
       <Filter>image</Filter>
     </ClInclude>
+    <ClInclude Include="image\BaseImage.h">
+      <Filter>image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

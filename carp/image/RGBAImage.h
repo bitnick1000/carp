@@ -6,27 +6,21 @@
 #include <Windows.h>
 #include "RGBAColor.h"
 #include "coord.h"
+#include "BaseImage.h"
 using namespace std;
 
 template<typename T>
-class RGBAImage {
+class RGBAImage :public Image{
     typedef T value_type ;
     T *data; //origin upper left
-    int width, height;
 public:
     //properties
-    int Width() const {
-        return this->width;
-    }
-    int Height() const {
-        return this->height;
-    }
     RGBAColor<T> GetPixel(int x, int y) const {
-        T *p = data + 4 * (y * width + x);
+        T *p = data + 4 * (y * Image::width + x);
         return *((RGBAColor<T>*)p);
     }
     T* dataPtr(int x, int y) const {
-        return data + 4 * (y * this->width + x);
+        return data + 4 * (y * Image::width + x);
     }
 public:
     //constructor

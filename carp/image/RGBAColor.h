@@ -1,5 +1,5 @@
-#ifndef __RGBA_COLOR_H__
-#define __RGBA_COLOR_H__
+#ifndef CARP__IMAGE__RGBA_COLOR_H
+#define CARP__IMAGE__RGBA_COLOR_H
 
 #include <iostream>
 using namespace std;

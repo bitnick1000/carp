@@ -1,5 +1,5 @@
-#ifndef __COORD_H__
-#define __COORD_H__
+#ifndef CARP__IMAGE__COORD_H
+#define CARP__IMAGE__COORD_H
 
 #include <iostream>
 using namespace std;

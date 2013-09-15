@@ -48,10 +48,10 @@
     <ClInclude Include="image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="image\coord.h">
+    <ClInclude Include="image\Image.h">
       <Filter>image</Filter>
     </ClInclude>
-    <ClInclude Include="image\BaseImage.h">
+    <ClInclude Include="image\Coord.h">
       <Filter>image</Filter>
     </ClInclude>
   </ItemGroup>

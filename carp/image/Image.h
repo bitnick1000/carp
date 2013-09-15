@@ -1,5 +1,5 @@
-#ifndef __BASE_IMAGE_H__
-#define __BASE_IMAGE_H__
+#ifndef CARP__IMAGE__IMAGE_H
+#define CARP__IMAGE__IMAGE_H
 
 class Image {
 protected:

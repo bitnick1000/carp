@@ -1,12 +1,12 @@
-#ifndef __RGBA_IMAGE_H__
-#define __RGBA_IMAGE_H__
+#ifndef CARP__IMAGE__RGBA_IMAGE_H
+#define CARP__IMAGE__RGBA_IMAGE_H
 
 #include <iostream>
 #include <fstream>
 #include <Windows.h>
 #include "RGBAColor.h"
-#include "coord.h"
-#include "BaseImage.h"
+#include "Coord.h"
+#include "Image.h"
 using namespace std;
 
 template<typename T>

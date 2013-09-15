@@ -65,8 +65,8 @@
   <ItemGroup>
     <ClInclude Include="console.h" />
     <ClInclude Include="image.h" />
-    <ClInclude Include="image\coord.h" />
-    <ClInclude Include="image\BaseImage.h" />
+    <ClInclude Include="image\Coord.h" />
+    <ClInclude Include="image\Image.h" />
     <ClInclude Include="image\RGBAColor.h" />
     <ClInclude Include="image\RGBAImage.h" />
     <ClInclude Include="jasmine.h" />
